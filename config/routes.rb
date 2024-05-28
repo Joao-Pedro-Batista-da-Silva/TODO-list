@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "lists#index"
 
   get "/lists", to: "lists#index"
+  get "/lists/new", to: "lists#new", as:"new_topic"
   get "/lists/:id", to: "lists#show", as: "topic"
-  get "/lists/new", to: "articles#new", as:"new_topic"
+  post "/lists", to: "lists#create"
 end
