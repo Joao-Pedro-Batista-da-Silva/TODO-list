@@ -14,11 +14,7 @@ class ListsController < ApplicationController
 
   def create
     @topic = List.new(topic_params)
-    if @topic.save
-      redirect_to lists_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @topic.save
   end
 
   private
