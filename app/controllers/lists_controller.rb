@@ -14,7 +14,7 @@ class ListsController < ApplicationController
 
   def create
     @topic = List.new(topic_params)
-    @topic.save
+    @topic.save!
   end
 
   private
