@@ -1,2 +1,3 @@
-<h1><%= @topic.title %></h1>
-<p><%= @topic.content%></p>
+<h1><%= @list.title %></h1>
+<p><%= @list.content%></p>
+<%= button_to "Delete", list_path(@list), method: :delete %>

@@ -1,7 +1,4 @@
 <h1>Nova Lista</h1>
-<%= simple_form_for @topic do |f| %>
-    <%= f.input :title%>
-    <%= f.input :content, as: :text%>
-    <%= f.button :submit%>    
-<% end %>
+<%= render partial: "form" %>
+
     

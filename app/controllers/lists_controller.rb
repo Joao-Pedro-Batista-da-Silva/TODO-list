@@ -4,21 +4,48 @@ class ListsController < ApplicationController
   end
 
   def show
-    @topic = List.find_by(id: params[:id])
-    redirect_to lists_path if @topic.blank?
+    set_list
   end
 
   def new
-    @topic = List.new
+    @list = List.new
   end
 
   def create
-    @topic = List.new(topic_params)
-    @topic.save!
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to lists_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+
+  end
+
+  def destroy
+    set_list
+    @list.destroy
+    redirect_to lists_path
+  end
+
+  def edit
+    set_list
+  end
+
+  def update
+    set_list
+    if @list.update(list_params)
+      redirect_to @list
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
-  def topic_params
-    params.require(:topic).permit(:title,:content)
+  def set_list
+    @list = List.find_by(id: params[:id])
+    redirect_to lists_path if @list.blank?
+  end
+  def list_params
+    params.require(:list).permit(:title,:content)
   end
 end
