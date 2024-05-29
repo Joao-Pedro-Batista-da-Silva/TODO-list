@@ -49,6 +49,6 @@ class ListsController < ApplicationController
     redirect_to lists_path if @list.blank?
   end
   def list_params
-    params.require(:list).permit(:title,:content)
+    params.require(:list).permit(:title)
   end
 end
