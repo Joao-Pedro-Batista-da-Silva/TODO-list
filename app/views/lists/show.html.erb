@@ -1,5 +1,4 @@
 <h1><%= @list.title %></h1>
-<!--<p><%= @list.content%></p>-->
 
 <% if user_signed_in? %>
     <%= link_to "Edit", edit_list_path(@list) %>

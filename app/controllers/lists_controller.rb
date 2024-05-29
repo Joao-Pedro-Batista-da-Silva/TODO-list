@@ -4,6 +4,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = current_user.lists.order(created_at: :desc)
+    puts(@lists)
   end
 
   def show
