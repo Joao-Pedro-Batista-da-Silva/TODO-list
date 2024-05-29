@@ -1,6 +1,9 @@
 class ListsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
-    @lists = List.all.order(created_at: :desc)
+    @lists = current_user.lists.order(created_at: :desc)
   end
 
   def show
@@ -8,11 +11,11 @@ class ListsController < ApplicationController
   end
 
   def new
-    @list = List.new
+    @list = current_user.lists.new
   end
 
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.new(list_params)
     if @list.save
       redirect_to lists_path
     else
@@ -42,7 +45,7 @@ class ListsController < ApplicationController
 
   private
   def set_list
-    @list = List.find_by(id: params[:id])
+    @list = current_user.lists.find_by(id: params[:id])
     redirect_to lists_path if @list.blank?
   end
   def list_params
