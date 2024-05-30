@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get "/lists/new", to: "lists#new" , as:"new_list"
   get "/lists/:id", to: "lists#show" , as: "list"
   get "/lists/:id/edit", to:"lists#edit" ,as:"edit_list"
+
   post "/lists", to: "lists#create"
+  post "/lists", to: "items#create_item"
+
   patch "/lists/:id", to: "lists#update"
+
   delete "/lists/:id", to: "lists#destroy"
 end

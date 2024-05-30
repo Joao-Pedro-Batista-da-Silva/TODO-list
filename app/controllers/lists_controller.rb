@@ -4,6 +4,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = current_user.lists.order(created_at: :desc)
+
   end
 
   def show
@@ -48,6 +49,9 @@ class ListsController < ApplicationController
     @list = current_user.lists.find_by(id: params[:id])
     redirect_to lists_path if @list.blank?
   end
+
+
+
   def list_params
     params.require(:list).permit(:title)
   end

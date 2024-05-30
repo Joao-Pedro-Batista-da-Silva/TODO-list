@@ -6,4 +6,7 @@
     
 <% @lists.each do |list|%>
     <h2><%= link_to(list.title, list_path(list)) %></h2>
+    <% list.items.each do |item| %>
+        <p><%= item.content %></p>
+    <% end %>
 <%end%>
