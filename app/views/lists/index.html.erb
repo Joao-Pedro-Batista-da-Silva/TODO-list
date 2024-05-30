@@ -1,12 +1,40 @@
-<h1>TODO List</h1>
+<head>
+    <style>
+        .custom-button{
+            background-color: #f7547a;
+            color:white;
+            padding:1px 2px;
+            border:none;
+            border-radius: 5px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<font size="+3">
+    <center>
+        <h1>
+            TODO List
+        </h1>
+    </center>
+</font>
 <% if user_signed_in? %>
-    <%= link_to "Nova lista", new_list_path %>
-    <%= button_to "Deslogar", destroy_user_session_path, method: :delete %>
+    <p style="color:#f7547a" onmouseover="this.style.color='green';" onmouseout="this.style.color='#f7547a'">
+        <%= link_to "Nova lista", new_list_path %>
+    </p>
+    <%= button_to "Deslogar", destroy_user_session_path, method: :delete , class: "custom-button"%>
 <% end %>
+
     
 <% @lists.each do |list|%>
-    <h2><%= link_to(list.title, list_path(list)) %></h2>
+    <h2 style="color:#f7547a" onmouseover="this.style.color='blue';" onmouseout="this.style.color='#f7547a'"><u>
+        <font size="+2">
+            <%= link_to(list.title, list_path(list)) %>
+        </font>
+    </u></h2>
     <% list.items.each do |item| %>
-        <p><%= item.content %></p>
+        <p>
+            <input type="checkbox">
+            <%= item.content %>
+        </p>
     <% end %>
 <%end%>

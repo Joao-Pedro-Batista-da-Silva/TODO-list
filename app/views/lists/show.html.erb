@@ -1,6 +1,30 @@
-<h1><%= @list.title %></h1>
+<head>
+    <style>
+        .custom-button{
+            background-color: #f7547a;
+            color:white;
+            padding:1px 2px;
+            border:none;
+            border-radius: 5px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<font size="+3">
+    <center>
+        <h1><%= @list.title %></h1>
+    </center>
+</font>
+<% @list.items.each do |item| %>
+    <p>
+        <%= item.content %>
+    </p>
+<% end %>
 
 <% if user_signed_in? %>
-    <%= link_to "Edit", edit_list_path(@list) %>
-    <%= button_to "Delete", list_path(@list), method: :delete %>
+    <p style="color:#f7547a" onmouseover="this.style.color='green'; "onmouseout="this.style.color='#f7547a'">
+        <%= link_to "Edit", edit_list_path(@list) %>
+    </p>
+
+    <%= button_to "Delete", list_path(@list), method: :delete, class: "custom-button" %>
 <% end %>
