@@ -1,4 +1,14 @@
-<%= simple_form_for @list do |f| %>
-    <%= f.input :title %>
-    <%= f.button :submit%>    
-<% end %>
+<div class="w-full h-full flex justify-center flex-col items-center">
+    <%= simple_form_for @list do |f| %>
+        <div class="flex justify-center flex-col p-10 bg-white w-[400px] rounded-lg">
+            <div class="form-inputs space-y-4">
+                <%=f.label :titulo, class: "block text-gray-700 text-sm font-bold mb-2"%>
+                <%= f.input :title, 
+                            label:false
+                %>
+                <%= f.button :submit%>    
+                <%= link_to ("Criar Item", )%>
+            </div>
+        </div>
+    <% end %>
+</div>

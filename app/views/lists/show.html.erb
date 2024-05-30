@@ -10,21 +10,24 @@
         }
     </style>
 </head>
-<font size="+3">
-    <center>
-        <h1><%= @list.title %></h1>
-    </center>
-</font>
-<% @list.items.each do |item| %>
-    <p>
-        <%= item.content %>
-    </p>
-<% end %>
+<center>
+    <font size="+3">
+            <h1><%= @list.title %></h1>
+    </font>
+    <% if user_signed_in? %>
+        <p style="color:#f7547a" onmouseover="this.style.color='green'; "onmouseout="this.style.color='#f7547a'">
+            <%= link_to "Edit", edit_list_path(@list) %>
+        </p>
 
-<% if user_signed_in? %>
-    <p style="color:#f7547a" onmouseover="this.style.color='green'; "onmouseout="this.style.color='#f7547a'">
-        <%= link_to "Edit", edit_list_path(@list) %>
-    </p>
+        <%= button_to "Delete", list_path(@list), method: :delete, class: "custom-button" %>
+    <% end %>
+    <div class="flex justify-center flex-col p-10 bg-white w-[300px] min-h-[50px] h-[auto] mt-[50px] rounded-lg " >
+        <% @list.items.each do |item| %>
+            <p>
+                <%= item.content %>
+            </p>
+        <% end %>
+    </div>
+</center>
 
-    <%= button_to "Delete", list_path(@list), method: :delete, class: "custom-button" %>
-<% end %>
+

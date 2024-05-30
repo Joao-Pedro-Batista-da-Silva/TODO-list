@@ -10,12 +10,11 @@
         }
     </style>
 </head>
+<center>
 <font size="+3">
-    <center>
         <h1>
             TODO List
         </h1>
-    </center>
 </font>
 <% if user_signed_in? %>
     <p style="color:#f7547a" onmouseover="this.style.color='green';" onmouseout="this.style.color='#f7547a'">
@@ -26,15 +25,26 @@
 
     
 <% @lists.each do |list|%>
-    <h2 style="color:#f7547a" onmouseover="this.style.color='blue';" onmouseout="this.style.color='#f7547a'"><u>
-        <font size="+2">
-            <%= link_to(list.title, list_path(list)) %>
-        </font>
-    </u></h2>
-    <% list.items.each do |item| %>
-        <p>
-            <input type="checkbox">
-            <%= item.content %>
-        </p>
-    <% end %>
+    <div class="inline-flex items-baseline">
+        <div class=" mx-0 flex flex-col p-10 bg-white w-[300px] min-h-[50px] h-[auto] mt-[50px] rounded-lg " >
+            <h2 style="color:#f7547a" onmouseover="this.style.color='#73c6fa';" onmouseout="this.style.color='#f7547a'">
+                <u>
+                    <font size="+2">
+                        <%= link_to(list.title, list_path(list)) %>
+                    </font>
+                </u>
+            </h2>
+            <div>
+                <% list.items.each do |item| %>
+                <div>
+                    <input type="checkbox">
+                    <span>
+                        <%= item.content %>
+                    </span>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 <%end%>
+</center>
