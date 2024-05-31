@@ -11,14 +11,14 @@
                     label:false,
                     autofocus: true,
                     input_html: { autocomplete: "email", class: "w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" }%>
-        <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>            
+        <%= f.label :Senha, class: "block text-gray-700 text-sm font-bold mb-2" %>            
         <%= f.input :password,
                     required: true,
                     label:false,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    hint: ("no minimo #{@minimum_password_length} caracteres" if @minimum_password_length),
                     hint_html: {class:"block text-gray-700 text-right"},
                     input_html: { autocomplete: "new-password",class: "w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" } %>
-        <%= f.label :repeat_Password, class: "block text-gray-700 text-sm font-bold mb-2" %>            
+        <%= f.label :"Repita Senha", class: "block text-gray-700 text-sm font-bold mb-2" %>            
         <%= f.input :password_confirmation,
                     required: true,
                     label:false,
@@ -26,7 +26,7 @@
       </div>
 
       <div class="form-actions mx-auto">
-        <%= f.button :submit, "Sign up", class:"cursor-pointer bg-red-300 px-10 rounded mt-[10px]" %>
+        <%= f.button :submit, "Inscreve-se  ", class:"cursor-pointer bg-red-300 px-10 rounded mt-[10px]" %>
       </div>
       <div class="text-center mt-[20px]">
         <%= render "users/shared/links" %>

@@ -12,7 +12,7 @@
 </head>
 <center>
 <font size="+5">
-        <h1>
+        <h1 class="font-['Open_Sans'] text-white bg-red-400 w-[300px] rounded-lg">
             TODO List
         </h1>
 </font>
@@ -41,7 +41,7 @@
                     <span>
                         <%= item.content %>
                     </span>
-                    <%= button_to "Delete", item_path(item), method: :delete, class: "custom-button" %>
+                    <%= button_to "Deletar", item_path(item), method: :delete, class: "custom-button" %>
                 </div>
                 <% end %>
             </div>

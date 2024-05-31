@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   #before_action :set_list
-  def new_item
+  def new
     @item = Item.new
   end
 
@@ -10,17 +10,17 @@ class ItemsController < ApplicationController
   end
 
   def create
+    logger.debug "======================= #{item_params}"
     @item = Item.new(item_params)
     if @item.save
       redirect_to lists_path
     else
-      render :new_item, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
 
   end
 
   def destroy
-    logger.debug "ola"
     set_item
     @item&.destroy
     redirect_to lists_path
