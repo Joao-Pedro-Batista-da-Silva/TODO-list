@@ -1,4 +1,4 @@
-class ItemController < ApplicationController
+class ItemsController < ApplicationController
   before_action :authenticate_user!
   #before_action :set_list
   def new_item
@@ -10,7 +10,6 @@ class ItemController < ApplicationController
   end
 
   def create
-    #logger.debug "id============================ #{params[:id]}
     @item = Item.new(item_params)
     if @item.save
       redirect_to lists_path
@@ -20,11 +19,22 @@ class ItemController < ApplicationController
 
   end
 
+  def destroy
+    logger.debug "ola"
+    set_item
+    @item&.destroy
+    redirect_to lists_path
+  end
+
   def set_list
     temp = params[:list_id]
     #temp = temp.to_i
     @list = current_user.lists.find_by(id: temp)
     #redirect_to lists_path if @list.blank?
+  end
+
+  def set_item
+    @item = Item.find_by(id: params[:id])
   end
 
   def item_params

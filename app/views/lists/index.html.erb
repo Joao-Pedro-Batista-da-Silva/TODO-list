@@ -11,7 +11,7 @@
     </style>
 </head>
 <center>
-<font size="+3">
+<font size="+5">
         <h1>
             TODO List
         </h1>
@@ -41,6 +41,7 @@
                     <span>
                         <%= item.content %>
                     </span>
+                    <%= button_to "Delete", item_path(item), method: :delete, class: "custom-button" %>
                 </div>
                 <% end %>
             </div>
