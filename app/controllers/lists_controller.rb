@@ -2,6 +2,7 @@ class ListsController < ApplicationController
 
   before_action :authenticate_user!
 
+
   def index
     @lists = current_user.lists.order(created_at: :desc)
   end
@@ -43,13 +44,12 @@ class ListsController < ApplicationController
     end
   end
 
-  private
   def set_list
     @list = current_user.lists.find_by(id: params[:id])
     redirect_to lists_path if @list.blank?
   end
 
-
+  private
 
   def list_params
     params.require(:list).permit(:title)
